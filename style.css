@@ -1,0 +1,107 @@
+/* Background */
+body {
+  background: url('bg-lontara.jpg') no-repeat center center/cover;
+  font-family: 'Luckiest Guy', cursive;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Title */
+.game-title {
+  font-size: 5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 3px #fff; /* garis pinggir putih */
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.game-subtitle {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+
+  -webkit-text-stroke: 1px #ff9800;
+  text-shadow: 0 0 6px rgba(0,0,0,0.7);
+  margin-top: 8px;
+}
+
+/* Menu button */
+.menu-btn {
+  background: linear-gradient(145deg, #ff9800, #f44336);
+  border-radius: 20px;
+  padding: 25px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  border: 3px solid #fff;
+  min-height: 140px;
+}
+
+.menu-btn i {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.6));
+}
+
+.menu-btn span {
+  font-size: 1.3rem;
+}
+
+/* Hover effect */
+.menu-btn:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  background: linear-gradient(145deg, #ff5722, #e64a19);
+}
+/* Scanner button (khusus desktop) */
+.menu-btn.scanner {
+  min-height: 160px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 576px) {
+  .game-title {
+    font-size: 3.5rem;
+    -webkit-text-stroke: 2px #fff;
+  }
+  .game-subtitle {
+    font-size: 2rem;
+  }
+  .menu-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 15px 18px;
+    gap: 12px;
+    font-size: 1rem;
+    min-height: auto;
+  }
+  .menu-btn i {
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  .menu-btn span {
+    font-size: 1rem;
+  }
+
+  /* Scanner AR biar sama dengan tombol lain di mobile */
+  .menu-btn.scanner {
+    min-height: auto;
+    width: 100%;
+  }
+}
+

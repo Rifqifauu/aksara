@@ -1,0 +1,52 @@
+[
+  {
+    "pertanyaan": "Siapakah pencipta aksara Lontara?",
+    "opsi": ["B.F. Matthes", "Daeng Pamatte", "Sultan Alauddin", "Karaeng Manguntungi"],
+    "jawaban": "Daeng Pamatte"
+  },
+  {
+    "pertanyaan": "Pada masa pemerintahan siapakah aksara Lontara pertama kali diciptakan?",
+    "opsi": ["Raja Gowa XIV Sultan Alauddin", "Raja Gowa IX Daeng Matanre Karaeng Manguntungi", "Raja Gowa I Tumanurung", "Raja Gowa X Tunipalangga"],
+    "jawaban": "Raja Gowa IX Daeng Matanre Karaeng Manguntungi"
+  },
+  {
+    "pertanyaan": "Apa nama lain aksara Lontara pada masa awal kemunculannya?",
+    "opsi": ["Lontara Bilang-Bilang", "Lontara Toa atau Jangang-Jangang", "Lontara Arab Makassar", "Lontara Unicode"],
+    "jawaban": "Lontara Toa atau Jangang-Jangang"
+  },
+  {
+    "pertanyaan": "Mengapa jumlah huruf aksara Lontara bertambah dari 18 menjadi 19?",
+    "opsi": ["Karena pengaruh bahasa Belanda", "Karena penyesuaian dengan alfabet Latin", "Karena pengaruh Islam yang menambahkan huruf Ha", "Karena pengaruh kerajaan tetangga"],
+    "jawaban": "Karena pengaruh Islam yang menambahkan huruf Ha"
+  },
+  {
+    "pertanyaan": "Karya sastra apa yang membuat aksara Lontara terkenal di Eropa setelah dibawa ke Belanda?",
+    "opsi": ["Hikayat Raja-Raja Bugis", "Sure’ I La Galigo", "Lipa Sabbe", "Epik Mahabharata versi Bugis"],
+    "jawaban": "Sure’ I La Galigo"
+  },
+  {
+    "pertanyaan": "Apa tujuan utama diciptakannya aksara Lontara?",
+    "opsi": ["Untuk menghitung hasil bumi", "Untuk menuliskan ucapan pemerintah dan mencatat peristiwa penting", "Untuk menghormati raja-raja Gowa", "Untuk menerjemahkan kitab suci"],
+    "jawaban": "Untuk menuliskan ucapan pemerintah dan mencatat peristiwa penting"
+  },
+  {
+    "pertanyaan": "Apa nama bentuk aksara Lontara yang dipengaruhi angka dan huruf Arab?",
+    "opsi": ["Lontara Toa", "Lontara Arab", "Lontara Bilang-Bilang", "Lontara Unicode"],
+    "jawaban": "Lontara Bilang-Bilang"
+  },
+  {
+    "pertanyaan": "Pada masa pemerintahan siapakah Lontara Bilang-Bilang berkembang?",
+    "opsi": ["Raja Gowa IX Daeng Matanre Karaeng Manguntungi", "Raja Gowa XIV Sultan Alauddin", "Tumanurung ri Tamalate", "Daeng Pamatte"],
+    "jawaban": "Raja Gowa XIV Sultan Alauddin"
+  },
+  {
+    "pertanyaan": "Dari mana asal kata “Lontara”?",
+    "opsi": ["Dari bahasa Makassar yang berarti aksara burung", "Dari bahasa Arab yang berarti kitab hitungan", "Dari bahasa Bugis, raung (daun) dan taq (lontar)", "Dari bahasa Jawa kuno yang berarti huruf"],
+    "jawaban": "Dari bahasa Bugis, raung (daun) dan taq (lontar)"
+  },
+  {
+    "pertanyaan": "Bagaimana cara menulis aksara Lontara pada masa awal penggunaannya?",
+    "opsi": ["Ditulis di atas batu menggunakan pahat", "Ditulis di atas kain tenun dengan tinta", "Ditulis di atas daun lontar yang disambung benang dan digulung pada kayu", "Ditulis di atas kulit kayu dengan arang"],
+    "jawaban": "Ditulis di atas daun lontar yang disambung benang dan digulung pada kayu"
+  }
+]

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sejarah Aksara Lontara</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== Body & Background ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('bg-lontara.jpg') no-repeat center center/cover;
+      color: #fff;
+      position: relative;
+    }
+
+    /* overlay gelap */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    /* ===== Container ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 95%;
+      max-width: 900px;
+      padding: 15px;
+    }
+
+    /* ===== Judul ===== */
+    .game-title {
+      font-family: 'Luckiest Guy', cursive;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    }
+
+    @media (min-width:768px){
+      .game-title{ font-size:2.5rem; }
+    }
+
+    /* ===== Card konten ===== */
+    .content-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(5px);
+      border: 2px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: #FFD700;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: justify;
+    }
+
+    /* ===== Navigasi tombol ===== */
+    .nav-btns {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-custom {
+      flex: 1 1 45%;
+      padding: 10px 0;
+      border-radius: 10px;
+      background: #FFD700;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .btn-custom:hover {
+      background: #FFC300;
+    }
+
+    /* ===== Tombol Kembali ===== */
+    .btn-sm {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
+    }
+
+    @media (max-width:576px){
+      .game-title {
+        font-size: 1.6rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container py-3">
+    <!-- tombol navigasi atas -->
+    <div class="d-flex justify-content-start mb-3">
+      <a href="index.html" class="btn btn-light btn-sm">⬅ Kembali</a>
+    </div>
+
+    <h1 class="game-title">Sejarah Aksara Lontara</h1>
+
+    <div class="content-card">
+      <h2 id="judul"></h2>
+      <p id="isi"></p>
+      <div class="nav-btns">
+        <button id="prevBtn" class="btn-custom">Previous</button>
+        <button id="nextBtn" class="btn-custom">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentIndex = 0;
+    let sejarahData = [];
+
+    fetch('sejarah.json')
+      .then(res => res.json())
+      .then(data => {
+        sejarahData = data.sejarah;
+        tampilkanSejarah();
+      });
+
+    function tampilkanSejarah() {
+      document.getElementById('judul').innerText = sejarahData[currentIndex].judul;
+      document.getElementById('isi').innerText = sejarahData[currentIndex].isi;
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentIndex < sejarahData.length - 1) {
+        currentIndex++;
+        tampilkanSejarah();
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        tampilkanSejarah();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan Aksara Lontara</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('bg-lontara.jpg') no-repeat center center/cover;
+      color: #fff;
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    h1 {
+      font-family: 'Luckiest Guy', cursive;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+    .soal-card {
+      margin-bottom: 20px;
+    }
+
+    .opsi-btn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px 15px;
+      border-radius: 12px;
+      border: none;
+      font-weight: bold;
+      font-size: 1rem;
+      background: #FFD700;
+      color: #000;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .opsi-btn:hover {
+      background: #FFC300;
+      transform: scale(1.03);
+    }
+
+    #nextBtn {
+      display: none;
+      padding: 12px 25px;
+      margin-top: 20px;
+      border-radius: 12px;
+      border: none;
+      background: #28a745;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    #nextBtn:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+
+    #feedback {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+   .btn-back {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 0.9rem;
+  z-index: 999;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* Tambahkan padding-top ke container agar tidak tertutup */
+.container {
+  padding-top: 60px; /* sesuai tinggi tombol + margin */
+}
+
+  </style>
+</head>
+<body>
+  <div style="position:absolute; top:20px; left:20px; z-index:2;">
+    <a href="index.html" class="btn-back">⬅ Kembali</a>
+  </div>
+
+  <div class="container">
+    <h1>Latihan Aksara Lontara</h1>
+
+    <div id="soal-container"></div>
+    <div id="feedback"></div>
+    <button id="nextBtn">Coba Lagi</button>
+  </div>
+
+  <script>
+    let latihanData = [];
+    let soalAcak = [];
+    let jawabanUser = [];
+    let indexSoal = 0;
+
+    fetch('latihan.json')
+      .then(res => res.json())
+      .then(data => {
+        latihanData = data;
+        resetLatihan();
+      });
+
+    function resetLatihan() {
+      let dataCopy = [...latihanData];
+      soalAcak = [];
+      for(let i=0; i<3; i++){
+        let idx = Math.floor(Math.random() * dataCopy.length);
+        soalAcak.push(dataCopy.splice(idx,1)[0]);
+      }
+      jawabanUser = [];
+      indexSoal = 0;
+      document.getElementById('feedback').innerHTML = "";
+      document.getElementById('nextBtn').style.display = "none";
+      tampilkanSoal();
+    }
+
+    function tampilkanSoal() {
+      const container = document.getElementById('soal-container');
+      container.innerHTML = "";
+      const soal = soalAcak[indexSoal];
+
+      const card = document.createElement('div');
+      card.className = "soal-card";
+      card.innerHTML = `<h5>Soal ${indexSoal+1}: ${soal.pertanyaan}</h5><div id="opsi"></div>`;
+      container.appendChild(card);
+
+      const opsiContainer = document.getElementById('opsi');
+      soal.opsi.forEach(o => {
+        const btn = document.createElement('button');
+        btn.className = "opsi-btn";
+        btn.innerText = o;
+        btn.onclick = () => {
+          jawabanUser[indexSoal] = o;
+          if(indexSoal < 2){
+            indexSoal++;
+            tampilkanSoal();
+          } else {
+            cekHasil();
+          }
+        };
+        opsiContainer.appendChild(btn);
+      });
+    }
+
+    function cekHasil() {
+      let benar = 0;
+      let hasilText = "";
+      soalAcak.forEach((soal,i)=>{
+        if(jawabanUser[i] === soal.jawaban){
+          benar++;
+          hasilText += `✅ Soal ${i+1} benar<br>`;
+        } else {
+          hasilText += `❌ Soal ${i+1} salah (Jawaban: ${soal.jawaban})<br>`;
+        }
+      });
+      document.getElementById('feedback').innerHTML = `<strong>Hasil: ${benar}/3</strong><br>` + hasilText;
+      document.getElementById('nextBtn').style.display = "inline-block";
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', resetLatihan);
+  </script>
+</body>
+</html>

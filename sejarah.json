@@ -1,0 +1,44 @@
+{
+  "sejarah": [
+    {
+      "id": 1,
+      "judul": "Asal-usul Aksara Lontara",
+      "isi": "Aksara Lontara merupakan warisan budaya yang lahir dari masyarakat Bugis-Makassar di Sulawesi Selatan. Aksara ini diciptakan oleh Daeng Pamatte, seorang syahbandar sekaligus Tumailalang atau menteri urusan istana luar dan luar negeri Kerajaan Gowa pada masa pemerintahan Raja Gowa IX, Daeng Matanre Karaeng Manguntungi (1510–1546). Tujuan awal penciptaannya adalah untuk menuliskan ucapan para pemimpin kerajaan serta mencatat berbagai peristiwa penting pada masa itu, sehingga dapat diwariskan kepada generasi berikutnya sebagai bekal pengembangan ilmu pengetahuan."
+    },
+    {
+      "id": 2,
+      "judul": "Lontara Toa atau Jangang-Jangang",
+      "isi": "Pada masa awal, aksara ini dikenal sebagai Lontara Toa atau Jangang-Jangang, yang berarti burung. Seiring perkembangan zaman, aksara Lontara mengalami perubahan, terutama setelah Islam menjadi agama resmi di Kerajaan Gowa. Bentuk hurufnya dipengaruhi oleh angka dan huruf Arab, seperti angka dua yang dimaknai sebagai huruf ka, angka dua dengan titik di bawah sebagai huruf ga, serta angka tujuh dengan titik di atas sebagai huruf nga."
+    },
+    {
+      "id": 3,
+      "judul": "Lontara Bilang-Bilang",
+      "isi": "Bentuk aksara yang telah dipengaruhi Arab ini dikenal dengan nama Lontara Bilang-Bilang atau Lontara Hitungan, dan diperkirakan mulai berkembang pada masa pemerintahan Raja Gowa XIV Sultan Alauddin (1593–1639)."
+    },
+    {
+      "id": 4,
+      "judul": "Penyederhanaan Bentuk",
+      "isi": "Perubahan berikutnya terjadi ketika bentuk huruf Lontara disederhanakan dengan pola belah ketupat. Dari semula berjumlah 18 huruf, aksara Lontara kemudian bertambah menjadi 19 huruf dengan masuknya huruf Ha yang merupakan pengaruh dari bahasa Arab. Kendati demikian, belum dapat dipastikan siapa yang melakukan penyederhanaan ini."
+    },
+    {
+      "id": 5,
+      "judul": "Masa Kejayaan",
+      "isi": "Pada abad ke-16 hingga awal abad ke-20, aksara Lontara menjadi media utama dalam kehidupan masyarakat Sulawesi Selatan, terutama dalam penulisan karya sastra. Salah satu karya paling terkenal yang menggunakan aksara ini adalah Sure’ I La Galigo, yang kemudian membuat aksara Lontara dikenal luas di Eropa setelah dibawa oleh B.F. Matthes ke Belanda."
+    },
+    {
+      "id": 6,
+      "judul": "Lontara dan Unicode",
+      "isi": "Saat ini, aksara Lontara telah diakui secara internasional dengan masuk ke dalam Unicode dan termuat dalam The Unicode Standard."
+    },
+    {
+      "id": 7,
+      "judul": "Asal Nama Lontara",
+      "isi": "Nama “Lontara” sendiri berasal dari bahasa Bugis, yakni gabungan kata raung yang berarti daun dan taq yang berarti lontar. Hal ini merujuk pada media tulis yang digunakan pada masa awal perkembangannya, yaitu daun lontar yang lebarnya sekitar satu sentimeter dan panjangnya menyesuaikan isi cerita yang ditulis."
+    },
+    {
+      "id": 8,
+      "judul": "Warisan Budaya",
+      "isi": "Daun-daun lontar biasanya disambung dengan benang dan digulung pada jepitan kayu, menyerupai bentuk pita kaset. Dengan cara ini, naskah dapat disimpan dan diwariskan dari generasi ke generasi, menjadikan aksara Lontara bukan hanya sebagai sistem tulisan, tetapi juga sebagai simbol peradaban Bugis-Makassar yang kaya nilai sejarah dan budaya."
+    }
+  ]
+}
