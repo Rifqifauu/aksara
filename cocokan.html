@@ -126,7 +126,7 @@
     fetch('huruf.json')
       .then(res => res.json())
       .then(data => {
-        currentSet = shuffle(data).slice(0, 10);
+        currentSet = shuffle(data).slice(0, 4);
         renderCards();
       });
 
