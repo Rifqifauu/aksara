@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocokan Aksara Lontara</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('bg-lontara.jpg') no-repeat center center/cover;
+      color: #fff;
+      position: relative;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    .game-title {
+      font-family: 'Luckiest Guy', cursive;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+    }
+    @media (min-width: 768px) {
+      .game-title { font-size: 2.5rem; }
+    }
+    .aksara-card, .latin-card {
+      background: rgba(255,255,255,0.12);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #fff;
+      backdrop-filter: blur(5px);
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+    .aksara-card:hover, .latin-card:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.2);
+    }
+    .aksara-symbol {
+      font-size: 2.5rem;
+      display: block;
+    }
+    .latin {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .selected {
+      border: 2px solid yellow !important;
+    }
+    .correct {
+      border-color: limegreen !important;
+    }
+    .wrong {
+      border-color: red !important;
+    }
+    .paired {
+      border: 2px dashed #ADD8E6 !important;
+      background: rgba(255,255,255,0.05);
+      cursor: default;
+      pointer-events: none;
+    }
+    /* SVG line di bawah container */
+    #lines-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container py-4 position-relative">
+    <!-- SVG untuk garis -->
+    <svg id="lines-svg"></svg>
+
+    <div class="d-flex justify-content-between mb-4">
+      <a href="index.html" class="btn btn-light btn-sm">⬅ Kembali</a>
+    </div>
+
+    <h1 class="game-title text-center mb-4">Cocokan Aksara Lontara</h1>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h4 class="text-center mb-3">Aksara</h4>
+        <div id="aksara-container" class="row g-3 justify-content-center"></div>
+      </div>
+      <div class="col-md-6">
+        <h4 class="text-center mb-3">Latin</h4>
+        <div id="latin-container" class="row g-3 justify-content-center"></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button id="check-btn" class="btn btn-warning fw-bold" disabled>Cek Jawaban</button>
+      <div id="result" class="mt-3 fs-5"></div>
+    </div>
+  </div>
+
+  <script>
+    let selectedAksara = null;
+    let selectedLatin = null;
+    let pairs = [];
+    let currentSet = [];
+    const lines = [];
+
+    // Fungsi shuffle array
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    fetch('huruf.json')
+      .then(res => res.json())
+      .then(data => {
+        currentSet = shuffle(data).slice(0, 10);
+        renderCards();
+      });
+
+    function renderCards() {
+      const aksaraContainer = document.getElementById('aksara-container');
+      const latinContainer = document.getElementById('latin-container');
+      const svg = document.getElementById('lines-svg');
+
+      aksaraContainer.innerHTML = "";
+      latinContainer.innerHTML = "";
+      pairs = [];
+      lines.length = 0;
+      svg.innerHTML = ""; // hapus semua garis lama
+
+      // tampilkan aksara
+      currentSet.forEach((h, i) => {
+        const col = document.createElement('div');
+        col.className = "col-6";
+        col.innerHTML = `
+          <div class="aksara-card" data-id="${i}" data-aksara="${h.aksara}">
+            <span class="aksara-symbol">${h.aksara}</span>
+          </div>
+        `;
+        aksaraContainer.appendChild(col);
+      });
+
+      // tampilkan latin (acak posisinya)
+      shuffle([...currentSet]).forEach((h, i) => {
+        const col = document.createElement('div');
+        col.className = "col-6";
+        col.innerHTML = `
+          <div class="latin-card" data-id="${currentSet.findIndex(x => x.latin === h.latin)}" data-latin="${h.latin}">
+            <span class="latin">${h.latin}</span>
+          </div>
+        `;
+        latinContainer.appendChild(col);
+      });
+
+      addListeners();
+      document.getElementById('check-btn').disabled = true;
+      document.getElementById('result').textContent = '';
+    }
+
+    function addListeners() {
+      document.querySelectorAll('.aksara-card').forEach(card => {
+        card.addEventListener('click', () => {
+          if (card.classList.contains('paired')) return;
+          if (selectedAksara) selectedAksara.classList.remove('selected');
+          selectedAksara = card;
+          card.classList.add('selected');
+          tryPair();
+        });
+      });
+
+      document.querySelectorAll('.latin-card').forEach(card => {
+        card.addEventListener('click', () => {
+          if (card.classList.contains('paired')) return;
+          if (selectedLatin) selectedLatin.classList.remove('selected');
+          selectedLatin = card;
+          card.classList.add('selected');
+          tryPair();
+        });
+      });
+    }
+
+    function tryPair() {
+      if (selectedAksara && selectedLatin) {
+        pairs.push({
+          aksaraId: selectedAksara.dataset.id,
+          latinId: selectedLatin.dataset.id,
+          aksaraEl: selectedAksara,
+          latinEl: selectedLatin
+        });
+
+        selectedAksara.classList.remove('selected');
+        selectedLatin.classList.remove('selected');
+
+        selectedAksara.classList.add('paired');
+        selectedLatin.classList.add('paired');
+        selectedAksara.style.pointerEvents = "none";
+        selectedLatin.style.pointerEvents = "none";
+
+        drawLine(selectedAksara, selectedLatin);
+
+        selectedAksara = null;
+        selectedLatin = null;
+
+        if (pairs.length === currentSet.length) {
+          document.getElementById('check-btn').disabled = false;
+        }
+      }
+    }
+
+    function drawLine(el1, el2) {
+      const svg = document.getElementById('lines-svg');
+      const rect1 = el1.getBoundingClientRect();
+      const rect2 = el2.getBoundingClientRect();
+      const containerRect = document.querySelector('.container').getBoundingClientRect();
+
+      const x1 = rect1.left + rect1.width / 2 - containerRect.left;
+      const y1 = rect1.top + rect1.height / 2 - containerRect.top;
+      const x2 = rect2.left + rect2.width / 2 - containerRect.left;
+      const y2 = rect2.top + rect2.height / 2 - containerRect.top;
+
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", x1);
+      line.setAttribute("y1", y1);
+      line.setAttribute("x2", x2);
+      line.setAttribute("y2", y2);
+      line.setAttribute("stroke", "rgba(255,255,0,0.5)"); // default kuning
+      line.setAttribute("stroke-width", "4");
+
+      svg.appendChild(line);
+      lines.push(line);
+    }
+
+    document.getElementById('check-btn').addEventListener('click', () => {
+      let correct = 0;
+      pairs.forEach((p, index) => {
+        if (p.aksaraId === p.latinId) {
+          p.aksaraEl.classList.add('correct');
+          p.latinEl.classList.add('correct');
+          lines[index].setAttribute("stroke", "rgba(0,255,0,0.7)"); // hijau
+          correct++;
+        } else {
+          p.aksaraEl.classList.add('wrong');
+          p.latinEl.classList.add('wrong');
+          lines[index].setAttribute("stroke", "rgba(255,0,0,0.7)"); // merah
+        }
+      });
+
+      document.getElementById('result').textContent =
+        `Benar: ${correct}, Salah: ${currentSet.length - correct}`;
+      document.getElementById('check-btn').disabled = true;
+
+      const retryBtn = document.createElement('button');
+      retryBtn.className = 'btn btn-primary fw-bold ms-2';
+      retryBtn.textContent = 'Coba Lagi';
+      retryBtn.addEventListener('click', () => {
+        renderCards();
+        document.getElementById('result').textContent = '';
+        retryBtn.remove();
+      });
+      document.getElementById('result').appendChild(retryBtn);
+    });
+  </script>
+</body>
+</html>
