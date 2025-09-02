@@ -1,6 +1,118 @@
 [
   {
+    "huruf":"ka",
+    "iframe": "https://viewer-edu.assemblrworld.com/Embed/-FKK85XwwTyiYKAPzb4T",
+    "sound": "sounds/ka.mp3"
+  },
+  {
+    "huruf":"ga",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-wYXL74aeuaAkUCsmUu3",
+    "sound": "sounds/ga.mp3"
+  },
+  {
+    "huruf":"nga",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-WQCRTmEjk4WS8XVum7X",
+    "sound": "sounds/nga.mp3"
+  },
+  {
+    "huruf":"ngka",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-HQuytqbhEdWqE3eh8s8",
+    "sound": "sounds/ngka.mp3"
+  },
+  {
+     "huruf":"pa",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-pGQc4aoUShe5mssmptc",
+    "sound": "sounds/pa.mp3"
+  },
+  {
+     "huruf":"ba",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-rqCxu3He4gZz6xqo9zR",
+    "sound": "sounds/ba.mp3"
+  },
+  {
+     "huruf":"ma",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-8WuUjSKiGFpTc73fQX9",
+    "sound": "sounds/ma.mp3"
+  },
+  {
+     "huruf":"mpa",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-VS6KvFFlKb6nvqE5bFg",
+    "sound": "sounds/mpa.mp3"
+  },
+  {
+     "huruf":"ta",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-LHzUFY2tYiTRsTcepc5",
+    "sound": "sounds/ta.mp3"
+  },
+  {
+     "huruf":"da",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-CQC4VjPC93PQHhv3daP",
+    "sound": "sounds/da.mp3"
+  },
+  {
+     "huruf":"na",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-JewAUmQrYkEGm8dfJqh",
+    "sound": "sounds/na.mp3"
+  },
+  {
+     "huruf":"nra",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-yqUS6gSjK9EYXQCSjGY",
+    "sound": "sounds/nra.mp3"
+  },
+  {
+     "huruf":"ca",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-TPSegvX45rTofPRq5rm",
+    "sound": "sounds/ca.mp3"
+  },
+  {
+    "huruf":"ja",
     "iframe": "https://viewer-edu.assemblrworld.com/Embed/-StKFmh7aRAca75mfvpS",
     "sound": "sounds/ja.mp3"
+  },
+  {
+    "huruf":"nya",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-Fgj3zPjpl4RbV8iCQnU",
+    "sound": "sounds/nya.mp3"
+  },
+  {
+    "huruf":"nca",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-inYyoRFTs7LPPpyCAlf",
+    "sound": "sounds/nca.mp3"
+  },
+  {
+    "huruf":"ya",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-riFETytmY4wpFggz2wy",
+    "sound": "sounds/ya.mp3"
+  },
+  {
+    "huruf":"ra",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-2hyLP6VVw6ehJynzsdS",
+    "sound": "sounds/ra.mp3"
+  },
+  {
+    "huruf":"la",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-pRyiwtiGcbs8bdVlWbq",
+    "sound": "sounds/la.mp3"
+  },
+  {
+    "huruf":"wa",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-w5llxrrYC88nV5QUJbK",
+    "sound": "sounds/wa.mp3"
+  },
+  {
+    "huruf":"sa",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-QoxupiKxfPscuAwwAy4",
+    "sound": "sounds/sa.mp3"
+  },
+  {
+    "huruf":"a",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-QsJa5gQgyuYcjRfse9z",
+    "sound": "sounds/a.mp3"
+  },
+  {
+    "huruf":"ha",
+    "iframe": "https://viewer.assemblrworld.com/Embed/-bJsxhzwcapo6yTbS7kP",
+    "sound": "sounds/ha.mp3"
   }
+
 ]
